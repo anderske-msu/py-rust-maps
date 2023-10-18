@@ -1,6 +1,6 @@
 import math
 import matplotlib.pyplot as plt
-import rust_maps
+import py_rust_maps
 
 
 def plot_map(x: list, y: list, title: str, x_label: str, y_label: str, fn: str) -> None:
