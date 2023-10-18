@@ -55,6 +55,26 @@ fn standard_map(theta: f64, p: f64, k: f64) -> (f64, f64) {
 }
 
 // * Python functions
+
+/// Calculates the position and velocity of a pendulum over time using the given parameters.
+///
+/// # Arguments
+///
+/// * `theta` - The initial angle of the pendulum in radians.
+/// * `theta_dot` - The initial angular velocity of the pendulum in radians per second.
+/// * `w` - The frequency of the pendulum.
+/// * `dt` - The time step between each iteration.
+/// * `n` - The number of iterations to perform.
+///
+/// # Returns
+///
+/// A tuple containing the position and velocity of the pendulum over time.
+///
+/// # Example
+///
+/// ```
+/// let (position, velocity) = pendulum_tracking(0.1, 0.0, 2*pi*0.5, 1e-2, 10);
+/// ```
 #[pyfunction]
 fn pendulum_tracking(theta: f64, theat_dot: f64, w: f64, dt: f64, n: i32) -> (Vec<f64>, Vec<f64>) {
     let mut theta_out: Vec<f64> = vec![0.0; n as usize];
@@ -71,6 +91,25 @@ fn pendulum_tracking(theta: f64, theat_dot: f64, w: f64, dt: f64, n: i32) -> (Ve
     return (theta_out, theta_dot_out);
 }
 
+/// Calculates the position and velocity of a particle in the standard map 
+/// using the given parameters.
+///
+/// # Arguments
+///
+/// * `theta` - The initial angle of the particle in radians.
+/// * `p` - The initial angular velocity of the particle in radians.
+/// * `k` - The strength of the perturbation in the standard map.
+/// * `n` - The number of iterations to perform.
+///
+/// # Returns
+///
+/// A tuple containing the position and velocity of the particle over time.
+///
+/// # Example
+///
+/// ```
+/// let (position, velocity) = standard_map_tracking(0.1, 0.2, -0.5, 100);
+/// ```
 #[pyfunction]
 fn standard_map_tracking(theta: f64, p: f64, k: f64, n: i32) -> (Vec<f64>, Vec<f64>) {
     let mut theta_out: Vec<f64> = vec![0.0; n as usize];
