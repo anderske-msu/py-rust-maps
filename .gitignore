@@ -85,3 +85,6 @@ docs/_build/
 
 # Pyenv
 .python-version
+
+# output files
+*.csv
