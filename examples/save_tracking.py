@@ -2,6 +2,7 @@ import math
 import numpy as np
 import py_rust_maps
 
+# TODO Turn this module into a test module
 
 def main() -> None:
     N = 1_000_000  # iterations
@@ -16,7 +17,6 @@ def main() -> None:
     p0 = 0  # velocity  [rad/s]
     w = 2 * math.pi * 0.5  # frequency [Hz]
     dt = 1e-2  # time step [s]
-    total_time = dt * N
 
     x, y = py_rust_maps.standard_map_tracking(ti, pi, k, N)
     x = np.array(x, dtype=np.float64)
