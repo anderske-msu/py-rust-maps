@@ -2,13 +2,16 @@ import math
 import numpy as np
 import py_rust_maps
 
+
 def transpose_list(x: list) -> list:
     return np.array(x).T.tolist()
+
 
 def save_3d_data(data: list, filename: str) -> None:
     data_2d = np.array(data).reshape(np.shape(data)[0], -1)
     np.savetxt(filename, data_2d, delimiter=",")
     return
+
 
 def main() -> None:
     number_iterations = 200_000
@@ -23,13 +26,15 @@ def main() -> None:
 
     data = []
     for initial_theta in np.linspace(0, maximum_amplitude, number_initial_conditions):
-        theta, p = py_rust_maps.standard_map_tracking(initial_theta, initial_p, k, number_iterations)
+        theta, p = py_rust_maps.standard_map_tracking(
+            initial_theta, initial_p, k, number_iterations
+        )
         data.append(transpose_list([theta, p]))
-        # transpose_list is needed because data should be 
-        # (number_initial_conditions, 2, number_iterations)
+        # transpose_list is needed because data should be
+        # (number_initial_conditions, number_iterations, 2)
 
     save_3d_data(data, filename)
-    
+
     return
 
 
