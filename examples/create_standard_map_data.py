@@ -14,7 +14,7 @@ def save_3d_data(data: list, filename: str) -> None:
 
 
 def main() -> None:
-    number_iterations = 200_000
+    number_iterations = 10_000
     number_initial_conditions = 20
     maximum_amplitude = math.pi / 3
     filename = "standard_map_data.csv"
