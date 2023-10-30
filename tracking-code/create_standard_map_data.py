@@ -21,7 +21,7 @@ def main() -> None:
 
     # Standard Map
     # ti = 0.15
-    k = -1
+    k = -0.5 # -4 < k < 0 for stability around (0, 0)
     initial_p = 0
 
     data = []
