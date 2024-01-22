@@ -1,6 +1,6 @@
 import math
 import matplotlib.pyplot as plt
-import py_rust_maps
+import py_rust_maps as rust
 
 
 def plot_map(x: list, y: list, title: str, x_label: str, y_label: str, fn: str) -> None:
@@ -32,10 +32,10 @@ def main() -> None:
     dt = 1e-2  # 10 ms
     total_time = dt * N  # 10 s
 
-    x, y = rust_maps.standard_map_tracking(ti, pi, k, N)
+    x, y = rust.standard_map_tracking(ti, pi, k, N)
     plot_map(x, y, "Standard Map", r"$\theta$", "p", "standard-map")
 
-    x, y = rust_maps.pendulum_tracking(t0, p0, w, dt, N)
+    x, y = rust.pendulum_tracking(t0, p0, w, dt, N)
     plot_map(
         x,
         y,

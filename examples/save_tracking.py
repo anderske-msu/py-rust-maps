@@ -1,8 +1,9 @@
 import math
 import numpy as np
-import py_rust_maps
+import py_rust_maps as rust
 
 # TODO Turn this module into a test module
+
 
 def main() -> None:
     N = 1_000_000  # iterations
@@ -18,13 +19,13 @@ def main() -> None:
     w = 2 * math.pi * 0.5  # frequency [Hz]
     dt = 1e-2  # time step [s]
 
-    x, y = py_rust_maps.standard_map_tracking(ti, pi, k, N)
+    x, y = rust.standard_map_tracking(ti, pi, k, N)
     x = np.array(x, dtype=np.float64)
     y = np.array(y, dtype=np.float64)
     np.savetxt("standard_tracking_theta.csv", x, delimiter=",")
     np.savetxt("standard_tracking_p.csv", y, delimiter=",")
 
-    x, y = py_rust_maps.pendulum_tracking(t0, p0, w, dt, N)
+    x, y = rust.pendulum_tracking(t0, p0, w, dt, N)
     x = np.array(x, dtype=np.float64)
     y = np.array(y, dtype=np.float64)
     np.savetxt("pendulum.csv", np.column_stack((x, y)).T, delimiter=",")
